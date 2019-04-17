@@ -1,22 +1,22 @@
 //let menuActive = false;
-const toggleMenu = () => {
+const toggleMenu = (e) => {
   // Toggle the "menu--open" class on your menu refence. 
-  if(!menuActive){
+  e.stopPropagation();
+  menu.classList.toggle('menu--open');
+  if (menu.classList.contains("menu--open")) {
+    TweenMax.to(menu, 1, {left: 0})
+  } else {
+    TweenMax.to(menu, 1, {left: -350})
+  };
+}
+
+const slideBack = () => {
+  if (menu.classList.contains("menu--open")) {
+    TweenMax.to(menu, 1, {left: -350})
     menu.classList.toggle('menu--open');
-    TweenMax.to(".menu", .5, {
-      left:0,
-    })
-    menuActive = true;
-  } else if(menuActive){
-    TweenMax.to(".menu", .2, {
-      left:-350,
-    })
-    menuActive = false;
-    setTimeout(()=>{
-      menu.classList.toggle('menu--open');
-    }, 200)
   }
 }
+
 
 
 // Start Here: Create a reference to the ".menu" class

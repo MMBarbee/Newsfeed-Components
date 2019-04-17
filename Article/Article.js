@@ -9,9 +9,13 @@ class Article {
     this.expandButton;
     this.expandButton = this.domElement.querySelector('.expandButton');
     // Using your expandButton reference, update the text on your expandButton to say "expand"
-    this.expandButton.innerText = 'Click to Expand';
+    this.expandButton.textContent = 'Click to Expand';
     // Set a click handler on the expandButton reference, calling the expandArticle method.
-    this.expandButton.addEventListener('click', () => this.expandArticle())
+    this.expandButton.addEventListener('click', () => this.expandArticle());
+
+    this.readButton = domElement.querySelector('.readButton');
+    this.readButton.textContent = 'Click to Remove';
+    this.readButton.addEventListener('click', () => this.removeArticle());
   }
 
   expandArticle() {
@@ -34,8 +38,6 @@ class Article {
   }
 }
 
-  }
-}
 
 /* START HERE: 
 
@@ -46,3 +48,8 @@ class Article {
 */
 
 let articles;
+let articles = document.querySelectorAll('.article');
+
+articles.forEach( article => {
+  return new Article(article);
+}
